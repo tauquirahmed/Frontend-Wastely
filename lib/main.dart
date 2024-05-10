@@ -4,6 +4,7 @@ import 'package:url_strategy/url_strategy.dart';
 import 'package:wastely/pages/login_screen.dart';
 import 'package:wastely/pages/register_screen.dart';
 import 'package:wastely/palletes/pallets.dart';
+import 'package:wastely/widgets/camera.dart';
 
 void main() {
   setPathUrlStrategy();
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark()
           .copyWith(scaffoldBackgroundColor: Pallete.backgroundColor),
-      initialRoute: '/login',
+      initialRoute: '/camera',
       getPages: [
         GetPage(
             name: '/login',
@@ -32,6 +33,10 @@ class MyApp extends StatelessWidget {
             page: () => const RegisterScreen(),
             transition: Transition.leftToRightWithFade,
             transitionDuration: const Duration(milliseconds: 500)),
+        GetPage(
+          name: '/camera',
+          page: () => CameraApp(),
+        ),
       ],
     );
   }
