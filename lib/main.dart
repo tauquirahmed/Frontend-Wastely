@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_strategy/url_strategy.dart';
+import 'package:wastely/pages/dashboard.dart';
 import 'package:wastely/pages/login_screen.dart';
 import 'package:wastely/pages/register_screen.dart';
 import 'package:wastely/palletes/pallets.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark()
           .copyWith(scaffoldBackgroundColor: Pallete.backgroundColor),
-      initialRoute: '/camera',
+      initialRoute: '/dashboard',
       getPages: [
         GetPage(
             name: '/login',
@@ -37,6 +38,10 @@ class MyApp extends StatelessWidget {
           name: '/camera',
           page: () => CameraApp(),
         ),
+        GetPage(
+          name: '/dashboard',
+          page: () => Dashboard(),
+        )
       ],
     );
   }
