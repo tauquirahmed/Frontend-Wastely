@@ -25,7 +25,7 @@ class GradientButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          fixedSize: const Size(395, 55),
+          fixedSize: const Size(370, 55),
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
         ),

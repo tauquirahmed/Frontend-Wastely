@@ -61,14 +61,19 @@ class RegisterScreen extends StatelessWidget {
               children: [
                 const Text('Already have an account? ',
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 18,
                       color: Colors.grey,
                     )),
                 TextButton(
                     onPressed: () {
                       Get.toNamed('/login');
                     },
-                    child: const Text('Log In')),
+                    child: const Text(
+                      'Log In',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    )),
               ],
             ),
           ],

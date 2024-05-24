@@ -10,13 +10,31 @@ class CameraCard extends StatelessWidget {
 
   File? _selectedImage;
 
-  Future _pickImageFromCamera() async {
+  Future _pickImageFromCamera(BuildContext context) async {
     final image = await ImagePicker().pickImage(source: ImageSource.camera);
     if (image == null) {
       return;
     }
     // Do something with the image
     _selectedImage = File(image.path);
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Image Captured'),
+          content: Text('The image has been captured.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -24,7 +42,7 @@ class CameraCard extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         // Add your button click logic here
-        _pickImageFromCamera();
+        _pickImageFromCamera(context);
       },
       style: ElevatedButton.styleFrom(
         elevation: 15,

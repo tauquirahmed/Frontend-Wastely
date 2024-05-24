@@ -1,14 +1,21 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_strategy/url_strategy.dart';
+import 'package:wastely/constants/constants.dart';
 import 'package:wastely/pages/dashboard.dart';
 import 'package:wastely/pages/login_screen.dart';
 import 'package:wastely/pages/register_screen.dart';
 import 'package:wastely/palletes/pallets.dart';
+import 'package:wastely/urls/urls.dart';
 import 'package:wastely/widgets/camera.dart';
+import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 
 void main() {
   setPathUrlStrategy();
+  dio.interceptors.add(CookieManager(cookieJar));
+  // fetchData();
   runApp(const MyApp());
 }
 
@@ -17,12 +24,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isLoggedIn = false;
+
     return GetMaterialApp(
       title: 'Wastely',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark()
           .copyWith(scaffoldBackgroundColor: Pallete.backgroundColor),
-      initialRoute: '/dashboard',
+      initialRoute: isLoggedIn ? '/dashboard' : '/login',
       getPages: [
         GetPage(
             name: '/login',

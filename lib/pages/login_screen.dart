@@ -52,14 +52,19 @@ class LoginScreen extends StatelessWidget {
               children: [
                 const Text('Don\'t have an account? ',
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 18,
                       color: Colors.grey,
                     )),
                 TextButton(
                     onPressed: () {
                       Get.toNamed('/register');
                     },
-                    child: const Text('Sign Up')),
+                    child: const Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    )),
               ],
             ),
             const Text(
@@ -72,13 +77,13 @@ class LoginScreen extends StatelessWidget {
             const SocialButton(
               iconPath: 'assets/svgs/g_logo.svg',
               label: "Continue with Google",
-              horizontalPadding: 100,
+              horizontalPadding: 80,
             ),
             const SizedBox(height: 20),
             const SocialButton(
               iconPath: 'assets/svgs/f_logo.svg',
               label: "Continue with Facebook",
-              horizontalPadding: 90,
+              horizontalPadding: 70,
             ),
           ],
         ),
