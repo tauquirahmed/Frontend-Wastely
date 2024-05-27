@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wastely/constants/constants.dart';
-import 'package:wastely/pages/controller/dashboard.dart';
+import 'package:wastely/pages/controller/dashboard_controller.dart';
 import 'package:wastely/urls/urls.dart';
 import 'package:wastely/widgets/camera_card.dart';
 import 'package:wastely/widgets/cards.dart';
 import 'package:wastely/widgets/drawer.dart';
+import 'package:wastely/widgets/register_complaint_card.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -17,7 +18,7 @@ class Dashboard extends StatelessWidget {
         builder: (controller) => Obx(
               () => !controller.isReady.value
                   ? Container(
-                      child: CircularProgressIndicator(),
+                      child: Center(child: CircularProgressIndicator()),
                     )
                   : Scaffold(
                       appBar: AppBar(
@@ -33,7 +34,7 @@ class Dashboard extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                CameraCard(),
+                                RegisterComplaintCard(),
                               ],
                             ),
                           ),
@@ -44,11 +45,15 @@ class Dashboard extends StatelessWidget {
                               children: [
                                 CardWidget(
                                     title: "Pending Complaints",
-                                    subtitle: "5",
+                                    subtitle: controller
+                                        .pending_complaint.complaints!.length
+                                        .toString(),
                                     color: Colors.redAccent),
                                 CardWidget(
                                   title: "Resolved Complaints",
-                                  subtitle: "5",
+                                  subtitle: controller
+                                      .resolved_complaint.complaints!.length
+                                      .toString(),
                                   color: Colors.green,
                                 ),
                               ],

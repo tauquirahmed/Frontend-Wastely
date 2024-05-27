@@ -1,9 +1,8 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:wastely/constants/constants.dart';
 import 'package:wastely/models/user.dart';
+import 'package:wastely/storage/box.dart';
 import 'package:wastely/urls/urls.dart';
 
 class LoginController extends GetxController {
@@ -38,6 +37,7 @@ class LoginController extends GetxController {
 
       if (response.statusCode == 200) {
         // Get.snackbar('Success', 'Login Successful');
+        box.write('uid', response.data['uid']);
         Get.toNamed('/dashboard');
         return true;
       } else {

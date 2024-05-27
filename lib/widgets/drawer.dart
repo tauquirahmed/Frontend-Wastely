@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wastely/palletes/pallets.dart';
+import 'package:wastely/storage/box.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -36,7 +37,10 @@ class MyDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.logout),
             title: Text('L O G O U T'),
-            onTap: null,
+            onTap: () {
+              box.remove('uid');
+              Get.offAllNamed('/login');
+            },
           ),
         ],
       ),
