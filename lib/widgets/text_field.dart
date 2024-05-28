@@ -3,11 +3,11 @@ import 'package:wastely/palletes/pallets.dart';
 
 class RegisterTextField extends StatelessWidget {
   final String hintText;
-  // final TextEditingController controller;
+  final TextEditingController controller;
   const RegisterTextField({
     super.key,
     required this.hintText,
-    // required this.controller,
+    required this.controller,
   });
 
   @override
@@ -15,7 +15,7 @@ class RegisterTextField extends StatelessWidget {
     return ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: 370),
       child: TextFormField(
-        // controller: controller,
+        controller: controller,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(27),
           enabledBorder: OutlineInputBorder(

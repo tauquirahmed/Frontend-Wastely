@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:wastely/constants/constants.dart';
+import 'package:wastely/pages/List_complaints.dart';
 import 'package:wastely/pages/complaint_screen.dart';
 import 'package:wastely/pages/dashboard.dart';
 import 'package:wastely/pages/login_screen.dart';
@@ -58,6 +59,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/complaint_screen',
           page: () => const CameraScreen(),
+        ),
+        GetPage(
+          name: '/list_complaint_screen',
+          page: () => const ListComplaints(),
         ),
       ],
     );

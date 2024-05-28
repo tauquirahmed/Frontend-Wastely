@@ -27,7 +27,9 @@ class MyDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.dashboard),
             title: Text('C O M P L A I N T S'),
-            onTap: null,
+            onTap: () {
+              Get.toNamed('/list_complaint_screen');
+            },
           ),
           ListTile(
             leading: Icon(Icons.settings),
