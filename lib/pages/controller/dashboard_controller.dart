@@ -10,6 +10,7 @@ class DashboardController extends GetxController {
   userModel user = userModel();
   complaintModel pending_complaint = complaintModel();
   complaintModel resolved_complaint = complaintModel();
+  complaintModel all_complaint = complaintModel();
 
   Future<void> getProfile() async {
     try {
@@ -28,13 +29,16 @@ class DashboardController extends GetxController {
           "CurrentStatus": "resolved",
           "uid": uid,
         });
-
+        final all_response = await dio.get(complaintUrl, queryParameters: {
+          "uid": uid,
+        });
         if (response.statusCode == 200 &&
             pending_response.statusCode == 200 &&
             resolved_response.statusCode == 200) {
           user = userModel.fromJson(response.data);
           pending_complaint = complaintModel.fromJson(pending_response.data);
           resolved_complaint = complaintModel.fromJson(resolved_response.data);
+          all_complaint = complaintModel.fromJson(all_response.data);
           isReady.value = true;
         }
       }

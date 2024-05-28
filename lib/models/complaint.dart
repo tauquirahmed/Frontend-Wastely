@@ -30,6 +30,7 @@ class Complaints {
   String? description;
   String? image;
   String? createdAt;
+  String? status;
 
   Complaints(
       {this.id, this.location, this.description, this.image, this.createdAt});
@@ -40,15 +41,17 @@ class Complaints {
     description = json['description'];
     image = json['image'];
     createdAt = json['created_at'];
+    status = json['status'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['location'] = this.location;
-    data['description'] = this.description;
-    data['image'] = this.image;
-    data['created_at'] = this.createdAt;
+    data['id'] = id;
+    data['location'] = location;
+    data['description'] = description;
+    data['image'] = image;
+    data['created_at'] = createdAt;
+    data['status'] = status;
     return data;
   }
 }
