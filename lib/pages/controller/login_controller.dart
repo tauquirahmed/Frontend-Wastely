@@ -34,28 +34,28 @@ class LoginController extends GetxController {
         'username': usernameController.text,
         'password': passwordController.text,
       });
-
+      debugPrint(response.statusCode.toString());
       if (response.statusCode == 200) {
         // Get.snackbar('Success', 'Login Successful');
         box.write('uid', response.data['uid']);
         Get.toNamed('/dashboard');
         return true;
       } else {
-        // Get.snackbar('Error', response.data['message']);
+        Get.snackbar('Error', response.data['message']);
         return false;
       }
     } catch (e) {
       print(e);
-      // Get.snackbar("Error", e.toString());
+      Get.snackbar("Error", e.toString());
     }
     return false;
   }
 
-  void login() {
+  void login() async {
     if (usernameController.text.isEmpty || passwordController.text.isEmpty) {
       Get.snackbar('Error', 'Please fill all fields');
     } else {
-      request();
+      await request();
     }
   }
 }

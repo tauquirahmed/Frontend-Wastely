@@ -1,6 +1,6 @@
 String loginUrl = "/login/";
 String registerUrl = "/register/";
-String baseUrl = "http://10.0.2.2:8000";
+String baseUrl = "https://wastely.ripan.dev";
 String profileUrl = "/get-user-details/";
 String complaintUrl = "/dashboard/";
 String registerComplaintUrl = "/register-complaint/";
