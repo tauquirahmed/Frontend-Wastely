@@ -32,9 +32,10 @@ class CameraScreen extends StatelessWidget {
                     CameraCard(),
                     const SizedBox(height: 20),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20, bottom: 10),
+                      padding: const EdgeInsets.only(
+                          left: 20, bottom: 10, right: 20),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             "Location",
@@ -42,6 +43,33 @@ class CameraScreen extends StatelessWidget {
                                 color: Pallete.whiteColor,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                "Press the Icon to Get Location",
+                                style: TextStyle(
+                                    color: Pallete.whiteColor,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  controller.isGettingLocation.value = true;
+                                  controller
+                                      .getGeoLocationPosition()
+                                      .then((value) {
+                                    controller.GetAddressFromLatLong(value);
+                                  });
+                                  controller.isGettingLocation.value = false;
+                                },
+                                icon: Icon(
+                                  Icons.location_on,
+                                  color: Pallete.whiteColor,
+                                  size: 50,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -83,6 +111,18 @@ class CameraScreen extends StatelessWidget {
             ),
             GetAlias.Obx(() {
               if (controller.isLoading.value) {
+                return Container(
+                  color: Colors.black54,
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              } else {
+                return SizedBox.shrink();
+              }
+            }),
+            GetAlias.Obx(() {
+              if (controller.isGettingLocation.value) {
                 return Container(
                   color: Colors.black54,
                   child: Center(

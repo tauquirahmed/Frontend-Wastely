@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:wastely/pages/controller/complaint_controller.dart';
 
-class RegisterComplaintCard extends StatelessWidget {
+class RegisterComplaintCard extends StatefulWidget {
   const RegisterComplaintCard({super.key});
 
+  @override
+  State<RegisterComplaintCard> createState() => _RegisterComplaintCardState();
+}
+
+class _RegisterComplaintCardState extends State<RegisterComplaintCard> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
